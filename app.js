@@ -105,12 +105,23 @@ var genres = function(artist, callback) {
 var express = require('express');
 var app = express();
 
+app.listen(process.env.PORT, function() {
+  console.log("Strežnik posluša na portu " + process.env.PORT + ".");
+});
+  
+  
+
+
 /* settings for static application files */
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 /* responds with first page's artists */
 app.get('/artists', function(request, response) {
+  response.redirect('/artists/1');
+});
+
+app.get('/', function(request, response) {
   response.redirect('/artists/1');
 });
 
